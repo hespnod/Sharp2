@@ -1,18 +1,18 @@
 document.title = "Sharpner project1";
-let maintitle = document.querySelector('#header-title');
-maintitle.style.border = 'solid 3px black';
 
-let title = document.querySelector('.title');
-title.style.color = 'green';
-title.style.fontWeight = 'bold';
 
-// let items = document.getElementsByClassName('list-group-item');
-// items[2].style.backgroundColor = 'green';
+//New code for Query Selector and Qeuery Selector All->
 
-// Array.from(items).forEach(function (element) {
-//     element.style.fontWeight = 'bold';
-// })
+// let item2 = document.querySelector('.list-group-item:nth-child(2)');
+// let item3 = document.querySelector('.list-group-item:nth-child(3)');
+// item2.style.backgroundColor = 'green';
+// item3.style.visibility = 'hidden';
 
-let li = document.getElementsByTagName('li');
-li[4].style.backgroundColor = 'green';
-li[4].style.color = 'white';
+let item02 = document.querySelectorAll('li');
+item02[1].style.color = 'green';
+
+
+let odd = document.querySelectorAll('li:nth-child(odd)');
+for (let i = 0; i < odd.length; i++) {
+    odd[i].style.backgroundColor = 'green';
+}
