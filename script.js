@@ -1,53 +1,48 @@
-document.title = "Sharpner project1";
+let ed = document.querySelectorAll('li');
 
+let u = document.querySelector('ul');
 
-//New code for Query Selector and Qeuery Selector All->
+ed.forEach((ele, i) => {
+    let but = document.createElement('button');
+    but.innerText = 'Edit';
+    but.className = 'btn btn-danger btn-sm float-right';
+    ele.appendChild(but);
 
-// let item2 = document.querySelector('.list-group-item:nth-child(2)');
-// let item3 = document.querySelector('.list-group-item:nth-child(3)');
-// item2.style.backgroundColor = 'green';
-// item3.style.visibility = 'hidden';
+    // u.appendChild(ele);  `
+})
 
-// let item02 = document.querySelectorAll('li');
-// item02[1].style.color = 'green';
+let form = document.getElementById('addForm');
+form.addEventListener('submit', addItem);
 
+function addItem(e) {
+    e.preventDefault();
+    // Creating ul to append the li in it
+    let ul = document.querySelector('ul');
+    //storing the value of form in a variable to append it into li
+    let cb = document.createTextNode(e.target.firstElementChild.value);
+    let li = document.createElement('li');
+    li.append(cb);
+    li.className = 'list-group-item';
+    // li.appendChild(but);
 
-// let odd = document.querySelectorAll('li:nth-child(odd)');
-// for (let i = 0; i < odd.length; i++) {
-//     odd[i].style.backgroundColor = 'green';
-// }
+    console.log('list valu=', li)
+    //creating button and appending it into the li
+    let btn = document.createElement('button');
+    btn.className = 'btn btn-danger btn-sm float-right delete';
+    btn.innerText = 'X';
+    li.appendChild(btn);
+    ul.appendChild(li);
+    e.target.firstElementChild.value = '';
+}
 
+let items = document.querySelector('ul');
+items.addEventListener('click', remove);
 
+function remove(e) {
+    if (e.target.classList.contains('delete')) {
 
-// Using Parent Element
-let child = document.querySelector('.list-group-item');
-console.log(child.parentNode);
-child.parentElement.parentElement.style.backgroundColor = '#f4f4f4';
+        items.removeChild(e.target.parentElement);
+    }
+}
 
-
-//Using Last Child Element
-let parent = document.querySelector('.list-group');
-console.log(parent.lastChild);
-parent.lastElementChild.style.backgroundColor = 'pink';
-
-//Using First Child Element
-let parentFirst = document.querySelector('.list-group');
-console.log(parentFirst.firstChild);
-parentFirst.firstElementChild.style.backgroundColor = 'blue';
-
-// Using Siblings
-child.nextElementSibling.innerText = `Im next sibling of ${child.innerText}`;
-parent.lastElementChild.previousElementSibling.innerText = `I'm previouse sibling of ${parent.lastElementChild.innerText}`;
-
-
-//Using create append
-
-let ul = document.querySelector('ul');
-
-let li = document.createElement('li');
-let cr = document.createTextNode('Item 5');
-// li.innerText = 'Item 5';
-li.className = 'list-group-item';
-li.append(cr);
-ul.appendChild(li);
-
+console.log('list valu=', ed)
